@@ -75,6 +75,12 @@ const useMetamask = () => {
     setSigner(signer);
   };
 
+  const disconnect = () => {
+    setNetwork(null);
+    setAccounts("");
+    setSigner(null);
+  };
+
   const getAccounts = async () => {
     const provider = setupProvider();
     const accounts: string[] = await provider.send("eth_accounts", []);
@@ -105,6 +111,7 @@ const useMetamask = () => {
     accounts,
     network,
     connect,
+    disconnect,
     getAccounts,
     sendTransaction,
   };
